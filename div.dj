@@ -1,0 +1,98 @@
+// I pledge my Honor that I have not cheated, and will not cheat, on this assignment
+// Raymond Gillies
+
+// Entered values are stored in the Linked List
+// Linked List holds pointer to root node
+
+// LinkedList node
+class Node extends Object {
+        nat data;
+        Node next;
+
+        nat setData(nat newData) {
+                data = newData;
+        }
+
+        // Recursively insert into the end
+        nat insert(nat newData) {
+                if(next == null) {
+                        next = new Node();
+                        next.setData(newData);
+                }
+                else {
+                        next.insert(newData);
+                };
+        }
+}
+
+class LinkedList extends Object {
+        nat count;
+        Node root;
+
+        nat get(nat index) {
+                nat currentIndex;
+                Node currentNode;
+                currentIndex = 0;
+                currentNode = root;
+                while(!(currentIndex == index)) {
+                        currentNode = currentNode.next;
+                        currentIndex = currentIndex + 1;
+                }
+                currentNode.data;
+        }
+        
+        // Store at root or call recursive insert
+        nat insert(nat nodeData) {
+                if(root == null) {
+                        root = new Node()
+                        root.setData(nodeData);
+        }
+                else {
+                        root.insert(nodeData);
+                };
+                count = count + 1;
+        }        
+}
+
+class Divide extends Object {
+        nat quotient(nat dividend, nat divisor) {
+                nat result = 0;
+                while(!(divisor > dividend)) {
+                        dividend = dividend - divisor;
+                        result = result + 1;
+                };
+                result;                
+        }
+
+        nat remainder(nat dividend, nat divisor) {
+                while(!(divisor > dividend)) {
+                        dividend = dividend - divisor;
+                }
+                dividend;
+        }
+}
+
+main {
+        Divide d;
+        d = new Divide();
+        LinkedList list;
+        list = new LinkedList();
+        nat input;
+        input = readNat();
+        while(!(input == 0)) {
+                list.insert(input);
+                input = readNat();
+        };
+        nat i;
+        nat j;
+        i = readNat();
+        j = readNat();
+        if((list.count > i) && (list.count > j)) {
+                printNat(d.quotient(list.get(j), list.get(i)));
+                printNat(d.remainder(list.get(j), list.get(i)));
+        }
+        else {
+                printNat(0);
+                printNat(0);
+        };
+}
